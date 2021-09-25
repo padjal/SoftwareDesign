@@ -1,4 +1,4 @@
-package cs1;
+package cw1;
 
 public class Main {
 
