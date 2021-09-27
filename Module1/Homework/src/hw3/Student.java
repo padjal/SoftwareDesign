@@ -2,14 +2,16 @@ package hw3;
 
 public class Student {
     public int grade;
+    public final String familyName;
     public boolean isPresent;
     public boolean isChecked;
     public final String name;
     public final String surname;
 
-    public Student(String name, String surname) {
-        this.name = name;
+    public Student(String surname, String name, String familyName) {
         this.surname = surname;
+        this.name = name;
+        this.familyName = familyName;
     }
 
     /**
@@ -19,10 +21,10 @@ public class Student {
      */
     public static Student parseStudent(String input){
         var data = input.split(" ");
-        if(data.length > 2){
+        if(data.length > 3){
             throw new IllegalArgumentException("Error parsing students. Please check text file.");
         }
-        return new Student(data[0], data[1]);
+        return new Student(data[0], data[1], data[2]);
     }
 
     @Override

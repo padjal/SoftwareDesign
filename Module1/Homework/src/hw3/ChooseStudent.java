@@ -39,7 +39,7 @@ public class ChooseStudent {
     static ArrayList<Student> getStudents(){
         var students = new ArrayList<Student>();
         try {
-            var file = new File("resources/students.txt"); // Change file location here
+            var file = new File("src/hw3/students.txt"); // Change file location here
             var fileReader = new Scanner(file);
             while (fileReader.hasNextLine()){
                 var studentString = fileReader.nextLine();
