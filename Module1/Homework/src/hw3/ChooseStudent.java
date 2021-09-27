@@ -32,13 +32,30 @@ public class ChooseStudent {
 
     }
 
-    private static void listAllStudentsExit(ArrayList<Student> students) {
-        for (var student :
-                students) {
-            System.out.println(student.toStringWithGrade());
+    /**
+     * Gets all students from file.
+     * @return All students which could be parsed from the file.
+     */
+    static ArrayList<Student> getStudents(){
+        var students = new ArrayList<Student>();
+        try {
+            var file = new File("resources/students.txt"); // Change file location here
+            var fileReader = new Scanner(file);
+            while (fileReader.hasNextLine()){
+                var studentString = fileReader.nextLine();
+                try {
+                    students.add(Student.parseStudent(studentString));
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                    return null;
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
         }
 
-        System.exit(0);
+        return students;
     }
 
     /**
@@ -88,6 +105,10 @@ public class ChooseStudent {
 
     }
 
+    /**
+     * Display all students in the given arraylist to console.
+     * @param students The students to be displayed.
+     */
     private static void listAllStudents(ArrayList<Student> students) {
         for (var student :
                 students) {
@@ -95,25 +116,16 @@ public class ChooseStudent {
         }
     }
 
-    static ArrayList<Student> getStudents(){
-        var students = new ArrayList<Student>();
-        try {
-            var file = new File("resources/students.txt");
-            var fileReader = new Scanner(file);
-            while (fileReader.hasNextLine()){
-                var studentString = fileReader.nextLine();
-                try {
-                    students.add(Student.parseStudent(studentString));
-                }catch (Exception e){
-                    System.out.println(e.getMessage());
-                    return null;
-                }
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
+    /**
+     * Display all students to console and close app.
+     * @param students The students to display.
+     */
+    private static void listAllStudentsExit(ArrayList<Student> students) {
+        for (var student :
+                students) {
+            System.out.println(student.toStringWithGrade());
         }
 
-        return students;
+        System.exit(0);
     }
 }
