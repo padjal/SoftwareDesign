@@ -19,9 +19,9 @@ public class Student {
      * @param input The line to be parsed.
      * @return A parsed student or exception if input is incorrect.
      */
-    public static Student parseStudent(String input){
+    public static Student parseStudent(String input) throws IllegalArgumentException {
         var data = input.split(" ");
-        if(data.length > 3){
+        if(data.length != 3){
             throw new IllegalArgumentException("Error parsing students. Please check text file.");
         }
         return new Student(data[0], data[1], data[2]);
