@@ -38,9 +38,17 @@ public class LibraryService {
 
             var newBook = new Book(title, author, publishYear);
 
-            var distinctBooks = library.books.stream().distinct();
+            // If a book with such title already exists.
+            if(library.books.contains(newBook)){
+                var originalBook = library.books.stream().filter(b -> Objects.equals(b.title, newBook.title)).findAny();
 
-            library.books.add(new Book(title, author, publishYear));
+                library.books.add(originalBook.get());
+
+                return;
+            }
+
+            // Otherwise add the new book.
+            library.books.add(newBook);
         }
     }
 
