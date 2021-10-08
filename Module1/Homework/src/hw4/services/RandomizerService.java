@@ -45,6 +45,10 @@ public class RandomizerService {
             "went camping"
     };
 
+    /**
+     * Gets a randomly generated string which resembles a human name.
+     * @return The generated name.
+     */
     public String getRandomName(){
         var nameIndex = random.nextInt(0, names.length-1);
         var surNameIndex = random.nextInt(0, surnames.length-1);
@@ -52,6 +56,10 @@ public class RandomizerService {
         return names[nameIndex] + " " + surnames[surNameIndex];
     }
 
+    /**
+     * Gets a randomly generated string which resembles a book title.
+     * @return The generated book title.
+     */
     public String getRandomBookTitle(){
         var nounIndex = random.nextInt(0, nouns.length-1);
         var verbIndex = random.nextInt(0, verbs.length-1);
@@ -59,6 +67,10 @@ public class RandomizerService {
         return "The " + nouns[nounIndex] + " that " + verbs[verbIndex];
     }
 
+    /**
+     * Gets a random year between 1600 and 2022.
+     * @return The randomly selected year between 1600 and 2022.
+     */
     public int getRandomYear(){
         return random.nextInt(1600, 2022);
     }

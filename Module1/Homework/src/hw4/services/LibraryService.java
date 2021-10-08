@@ -8,6 +8,9 @@ import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Contains and provides functionality to work with a library.
+ */
 public class LibraryService {
     private final List<Book> takenBooks;
     private final Library library = new Library();
@@ -21,6 +24,9 @@ public class LibraryService {
         generateBooksRandomly();
     }
 
+    /**
+     * Generate random books. Should be called while initializing the library service.
+     */
     private void generateBooksRandomly(){
         String title, author;
         int publishYear;
@@ -38,6 +44,9 @@ public class LibraryService {
         }
     }
 
+    /**
+     * Provides a user interface for adding a book to the library.
+     */
     public void addBook(){
         System.out.print("Enter book author: ");
         var author = Scan.readLine();
@@ -58,6 +67,10 @@ public class LibraryService {
         library.books.add(new Book(title, author, publishDate));
     }
 
+    /**
+     * Provides functionality for getting a book from the library.
+     * @param input Contains the book title.
+     */
     public void takeBook(String[] input){
 
         String title = String.join(" ", Arrays.copyOfRange(input, 1, input.length));
@@ -74,12 +87,18 @@ public class LibraryService {
         library.books.remove(foundBook.get());
     }
 
+    /**
+     * Displays all taken books from the library.
+     */
     public void listTakenBooks(){
         for (var book : takenBooks){
             System.out.println(book);
         }
     }
 
+    /**
+     * Displays all books in the library.
+     */
     public void listAllBooks(){
         var distinctBooks = new HashMap<Book, Integer>();
 

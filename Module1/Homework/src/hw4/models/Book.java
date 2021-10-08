@@ -2,6 +2,9 @@ package hw4.models;
 
 import java.util.Objects;
 
+/**
+ * Represents a book.
+ */
 public class Book {
     private static int idCounter = 1;
 

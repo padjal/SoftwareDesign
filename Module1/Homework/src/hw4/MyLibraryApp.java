@@ -4,7 +4,7 @@ import hw4.services.LibraryService;
 import hw4.utilities.Scan;
 
 public class MyLibraryApp {
-    private static LibraryService libraryService = new LibraryService();
+    private static final LibraryService libraryService = new LibraryService();
 
     public static void main(String[] args) {
         String[] input;
@@ -17,6 +17,8 @@ public class MyLibraryApp {
                 case "/all" -> libraryService.listAllBooks();
             }
         }while (!input[0].equals("/q"));
+
+        Exit();
     }
 
     public static void Exit(){
