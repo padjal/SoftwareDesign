@@ -15,7 +15,6 @@ public class MyLibraryApp {
                 case "/get" -> libraryService.takeBook(input);
                 case "/put" -> libraryService.addBook();
                 case "/all" -> libraryService.listAllBooks();
-                default -> Exit();
             }
         }while (!input[0].equals("/q"));
     }
