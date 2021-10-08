@@ -44,7 +44,7 @@ public class LibraryService {
 
                 library.books.add(originalBook.get());
 
-                return;
+                continue;
             }
 
             // Otherwise add the new book.
