@@ -10,9 +10,9 @@ The game is usually played in turns where each player gets a chance to guess a s
 ### The board
 The gameboard at any given time of the game displays the current situation of all tiles of the ocean. A single tile in the ocean can be in one of three different states:
 - \[ \] - hidden
-- \[O] - fired but missed
-- \[@] - fired and on target
-- \[X] - one block of ship sunken
+- \[O\] - fired but missed
+- \[@\] - fired and on target
+- \[X\] - one block of ship sunken
   
 The program provides two ways of game initialization - command line parameters and a more user-frindly prompt-response based input system. Both work interchangeably but the user should stick to the system they have chosen until the end of the game after making the first step.
 
@@ -23,5 +23,7 @@ The program provides two ways of game initialization - command line parameters a
 ## Project structure
 In order to prove a good understanding of OOP principles, I have created an UML class diagram for the project:
 
-![Battleships UML Class diagram](/resources/Battleships_diagram.png "Battleships UML Class diagram")
+![Battleship UML class diagram](resources/Battleships_diagram.png)
+
+
 
