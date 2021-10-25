@@ -1,7 +1,12 @@
 package battleship.models;
 
 public class Battleship extends Ship{
-    Battleship(int cells) {
+    public Battleship() {
         super(4);
+    }
+
+    @Override
+    public String toString() {
+        return "Battleship with id " + id;
     }
 }
