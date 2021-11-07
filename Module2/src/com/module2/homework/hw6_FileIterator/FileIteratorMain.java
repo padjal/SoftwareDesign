@@ -1,6 +1,7 @@
-package com.module2.homework.hw7;
+package com.module2.homework.hw6_FileIterator;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class FileIteratorMain {
@@ -12,7 +13,7 @@ public class FileIteratorMain {
         try {
             fileIterator= new FileIterator(FILE_PATH);
         }catch (IOException e) {
-            System.out.println("There has been a problem while reading the file.\n" + e.getStackTrace());
+            System.out.println("There has been a problem while reading the file.\n" + Arrays.toString(e.getStackTrace()));
 
             return;
         }

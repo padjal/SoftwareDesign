@@ -1,4 +1,4 @@
-package com.module2.homework.hw7;
+package com.module2.homework.hw6_FileIterator;
 
 import java.io.*;
 import java.nio.charset.Charset;
