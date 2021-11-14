@@ -1,4 +1,4 @@
-package com.module2.homework.hw6_FileIterator;
+package softwareDesign.module2.homework.hw1_FileIterator;
 
 import java.io.IOException;
 import java.util.Arrays;

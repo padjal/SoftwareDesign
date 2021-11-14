@@ -1,4 +1,4 @@
-package com.module2.classwork.cw1_studentDao;
+package softwareDesign.module2.classwork.cw1_StudentDao;
 
 import java.io.*;
 import java.util.HashSet;
@@ -42,23 +42,23 @@ public class StudentDao {
     }
 
     void readStudents() {
-       try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
-           String currentLine = br.readLine();
-           while (currentLine != null){
-               var args = currentLine.split(";");
-               if(args.length != 3){
-                   return;
-               }
-               var student = new Student();
-               student.name = args[0];
-               student.surname = args[1];
-               student.group = args[2];
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
+            String currentLine = br.readLine();
+            while (currentLine != null){
+                var args = currentLine.split(";");
+                if(args.length != 3){
+                    return;
+                }
+                var student = new Student();
+                student.name = args[0];
+                student.surname = args[1];
+                student.group = args[2];
 
-               students.add(student);
-               currentLine = br.readLine();
-           }
-       } catch (IOException ioException) {
-           throw new UncheckedIOException("There has been an error while reading from file.", ioException);
-       }
+                students.add(student);
+                currentLine = br.readLine();
+            }
+        } catch (IOException ioException) {
+            throw new UncheckedIOException("There has been an error while reading from file.", ioException);
+        }
     }
 }
