@@ -29,7 +29,9 @@ public class ProducerTask implements Runnable{
      */
     @Override
     public void run() {
-        while (true){
+        boolean isInterupted = false;
+
+        while (!isInterupted){
             // Generate new number to add
             int newInteger = random.nextInt(100);
             if(numbers.offer(newInteger)){
@@ -40,7 +42,7 @@ public class ProducerTask implements Runnable{
             try {
                 Thread.sleep(random.nextInt(MIN_SLEEP_TIME, MAX_SLEEP_TIME));
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                isInterupted = true;
             }
         }
     }

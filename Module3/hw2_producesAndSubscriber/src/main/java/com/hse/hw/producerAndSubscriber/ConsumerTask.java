@@ -29,7 +29,9 @@ public class ConsumerTask implements Runnable{
      */
     @Override
     public void run() {
-        while(true){
+        boolean isInterrupted = false;
+
+        while(!isInterrupted){
             var takenElement = numbers.poll();
             if(takenElement != null){
                 System.out.println(Colors.TEXT_CYAN + "Consumer: Took out element " + takenElement + "." + Colors.TEXT_RESET);
@@ -39,7 +41,7 @@ public class ConsumerTask implements Runnable{
             try {
                 Thread.sleep(random.nextInt(MIN_SLEEP_TIME, MAX_SLEEP_TIME));
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                isInterrupted = true;
             }
         }
     }
