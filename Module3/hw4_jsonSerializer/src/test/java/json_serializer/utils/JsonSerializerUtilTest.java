@@ -10,12 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class JsonSerializerUtilTest {
 
     @Test
-    void serialize_PersonWithAllFieldsInitialized_SerializesAllFieldsWithJsonElementAnnotation() {
+    void serialize_PersonAllFields_JsonString() {
         // Assign
         var personOne = new Person("Pavel", "Dzhalev", "22", "76");
 
         var serializer = new JsonSerializerUtil();
-
 
         try {
             // Act
@@ -27,18 +26,15 @@ class JsonSerializerUtilTest {
                     jsonResult);
         } catch (JsonSerializerUtil.JsonSerializeException e) {
             e.printStackTrace();
-
-            fail();
         }
     }
 
     @Test
-    void serialize_PersonWithSomeFieldsInitialized_SerializesAllFieldsWithNullWhenFieldIsNull() {
+    void serialize_PersonSomeFields_JsonString() {
         // Assign
         var personOne = new Person("Pavel", "Dzhalev", "22");
 
         var serializer = new JsonSerializerUtil();
-
 
         try {
             // Act
@@ -50,18 +46,15 @@ class JsonSerializerUtilTest {
                     jsonResult);
         } catch (JsonSerializerUtil.JsonSerializeException e) {
             e.printStackTrace();
-
-            fail();
         }
     }
 
     @Test
-    void serialize_PersonWithNoFieldsInitialized_SerializesAllFieldsWithNullWhenFieldIsNull() {
+    void serialize_PersonNoFields_JsonString() {
         // Assign
         var personOne = new Person();
 
         var serializer = new JsonSerializerUtil();
-
 
         try {
             // Act
@@ -73,18 +66,15 @@ class JsonSerializerUtilTest {
                     jsonResult);
         } catch (JsonSerializerUtil.JsonSerializeException e) {
             e.printStackTrace();
-
-            fail();
         }
     }
 
     @Test
-    void serialize_StudentWithAllFieldsInitialized_SerializesAllFieldsWithJsonElementAnnotation() {
+    void serialize_StudentAllFields_JsonString() {
         // Assign
         var studentOne = new Student("Pavel", "Dzhalev", "22", "76");
 
         var serializer = new JsonSerializerUtil();
-
 
         try {
             // Act
@@ -96,8 +86,6 @@ class JsonSerializerUtilTest {
                     jsonResult);
         } catch (JsonSerializerUtil.JsonSerializeException e) {
             e.printStackTrace();
-
-            fail();
         }
     }
 
@@ -107,7 +95,6 @@ class JsonSerializerUtilTest {
         var studentOne = new Student("Pavel", "Dzhalev", "22");
 
         var serializer = new JsonSerializerUtil();
-
 
         try {
             // Act
@@ -119,8 +106,6 @@ class JsonSerializerUtilTest {
                     jsonResult);
         } catch (JsonSerializerUtil.JsonSerializeException e) {
             e.printStackTrace();
-
-            fail();
         }
     }
 
