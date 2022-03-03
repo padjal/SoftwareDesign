@@ -1,4 +1,4 @@
-package homework4.annotations;
+package annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,6 +10,9 @@ import java.lang.annotation.Target;
         ElementType.FIELD,
 })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PropertyName {
+public @interface DateFormat {
+    /**
+     * Шаблон для сохранения и восстановления дат
+     */
     String value();
 }

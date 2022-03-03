@@ -1,6 +1,6 @@
-package yamlmapper.model;
+package model;
 
-import homework4.annotations.Exported;
+import annotations.Exported;
 
 import java.util.List;
 

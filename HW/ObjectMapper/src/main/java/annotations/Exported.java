@@ -1,7 +1,7 @@
-package homework4.annotations;
+package annotations;
 
-import homework4.annotations.enums.NullHandling;
-import homework4.annotations.enums.UnknownPropertiesPolicy;
+import annotations.enums.NullHandling;
+import annotations.enums.UnknownPropertiesPolicy;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

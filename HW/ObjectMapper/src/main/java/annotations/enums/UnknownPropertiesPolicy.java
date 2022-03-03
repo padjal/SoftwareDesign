@@ -1,4 +1,4 @@
-package homework4.annotations.enums;
+package annotations.enums;
 
 public enum UnknownPropertiesPolicy {
     IGNORE,

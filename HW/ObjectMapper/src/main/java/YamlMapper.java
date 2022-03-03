@@ -1,6 +1,4 @@
-package yamlmapper;
-
-import homework4.interfaces.Mapper;
+import interfaces.Mapper;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package homework4.interfaces;
+package interfaces;
 
 import java.io.File;
 import java.io.IOException;
