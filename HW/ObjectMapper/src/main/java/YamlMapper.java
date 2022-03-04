@@ -1,16 +1,30 @@
+import annotations.Exported;
+import annotations.Ignored;
+import annotations.PropertyName;
+import exceptions.NotExportedException;
+import exceptions.YamlSerializationException;
 import interfaces.Mapper;
+import org.apache.commons.lang3.ClassUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
+import java.util.Collection;
 
 public class YamlMapper implements Mapper {
     boolean retainIdentity;
+    StringBuilder stringBuilder;
+    int indent = 0;
 
     public YamlMapper(boolean retainIdentity){
         this.retainIdentity = retainIdentity;
+    }
+
+    public YamlMapper(){
+
     }
 
     public boolean getRetainIdentity(){
@@ -132,10 +146,105 @@ public class YamlMapper implements Mapper {
      *
      * @param object объект для сохранения
      * @return строковое представление объекта в выбранном формате
+     * @throws NotExportedException when the object is not marked with @Exported
      */
     @Override
     public String writeToString(Object object) {
-        return null;
+        if(object.getClass().getAnnotation(Exported.class) == null){
+            throw new NotExportedException("Object is not marked as exported!");
+        }
+
+        stringBuilder = new StringBuilder();
+
+        for (var field : object.getClass().getDeclaredFields()) {
+            try {
+                var serializedField = serializeField(field, object);
+
+                if (serializedField != null){
+                    stringBuilder
+                            .append(getIndentation())
+                            .append(serializedField)
+                            .append("\n");
+                }
+            }catch (IllegalAccessException e){
+                throw new YamlSerializationException("Illegal access", e.getCause());
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+
+    private String getIndentation(){
+        var sb = new StringBuilder();
+
+        for (int i = 0; i < indent; i++){
+            sb.append("  ");
+        }
+
+        return sb.toString();
+    }
+
+    private String serializeField(Field field, Object object) throws IllegalAccessException{
+        field.trySetAccessible();
+
+        if (field.isAnnotationPresent(Ignored.class)){
+            return null;
+        }
+
+        var propertyName = field.isAnnotationPresent(PropertyName.class) ?
+                field.getAnnotation(PropertyName.class).value() :
+                field.getName();
+
+        var propertyValue = field.get(object);
+
+        if(propertyValue == null){
+            switch (object.getClass().getAnnotation(Exported.class).nullHandling()){
+                case EXCLUDE -> {return null;}
+                case INCLUDE -> {return propertyName + ": null";}
+            }
+        }
+
+        if (ClassUtils.isPrimitiveOrWrapper(propertyValue.getClass()) || propertyValue instanceof String){
+            return propertyName + ": " + propertyValue;
+        }else{
+            return propertyName + ": " + serializeObject(propertyValue);
+        }
+    }
+
+    private String serializeObject(Object object){
+        if(object.getClass().getAnnotation(Exported.class) == null){
+            throw new NotExportedException("Object is not marked as exported!");
+        }
+
+        var sb = new StringBuilder();
+
+        if (object instanceof Collection collection){
+            indent++;
+            sb.append("n");
+
+            for (var elem : collection) {
+                sb.append("- ");
+
+                sb.append("\n");
+            }
+        }
+
+        for (var field : object.getClass().getDeclaredFields()) {
+            try {
+                var serializedField = serializeField(field, object);
+
+                if (serializedField != null){
+                    stringBuilder
+                            .append(getIndentation())
+                            .append(serializedField)
+                            .append("\n");
+                }
+            }catch (IllegalAccessException e){
+                throw new YamlSerializationException("Illegal access", e.getCause());
+            }
+        }
+
+        return sb.toString();
     }
 
     /**
