@@ -7,6 +7,7 @@ import model.TestClass;
 import org.junit.Assert;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.yaml.snakeyaml.*;
 
 import java.io.Console;
 import java.lang.constant.Constable;
@@ -55,7 +56,7 @@ class YamlMapperTest {
         var yamlResult = yamlMapper.writeToString(preference);
 
         // Assert
-        assertEquals("description: Test description\n", yamlResult);
+        assertEquals("description: Test description", yamlResult);
     }
 
     @Test
@@ -69,13 +70,14 @@ class YamlMapperTest {
 
         // Act
         var yamlResult = yamlMapper.writeToString(guest);
-        //System.out.println(yamlResult);
+        System.out.println(yamlResult);
 
         // Assert
         assertEquals("name: TestGuess\n" +
+                "test: 234\n" +
                 "preferences: \n" +
-                "  description: Test description1\n" +
-                "  description: Test description2\n", yamlResult);
+                "  -   description: Test description2\n" +
+                "  -   description: Test description1", yamlResult);
     }
 
     @Test
@@ -112,7 +114,7 @@ class YamlMapperTest {
         assertEquals("name: TestGuess\n" +
                 "preferences: \n" +
                 "  description: Test description1\n" +
-                "  description: Test description2\n", yamlResult);
+                "  description: Test description2", yamlResult);
     }
 
     @Test
@@ -130,7 +132,28 @@ class YamlMapperTest {
         var test = new TestClass();
         var yamlMapper = new YamlMapper();
         var res = yamlMapper.writeToString(test);
-        System.out.println(res);
-        assertEquals(1, 1);
+
+        for (var field : test.getClass().getDeclaredFields()){
+            try {
+                System.out.println(yamlMapper.serializeField(field, test));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Yaml yaml = new Yaml();
+        System.out.println(yaml.dump(test));
+
+        System.out.println("==============");
+        System.out.println(yamlMapper.writeToString(test));
+        //System.out.println(res);
+        assertEquals("a: 4\n" +
+                "b: 4.5\n" +
+                "name: pavel\n" +
+                "prefs: \n" +
+                "  - description: hey there\n" +
+                "  - description: lalala\n" +
+                "pref: \n" +
+                "  description: hheyyy jtest", res);
     }
 }

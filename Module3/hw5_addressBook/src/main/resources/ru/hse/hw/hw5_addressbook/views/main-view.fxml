@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<GridPane alignment="TOP_LEFT"
+          vgap="10"
+          xmlns="http://javafx.com/javafx/8"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="ru.hse.hw.hw5_addressbook.MainViewModel">
+    <Label text="Address book"
+    GridPane.rowIndex="0"/>
+
+    <TableView GridPane.rowIndex="1"
+    fx:id="peopleTableView">
+        <columns>
+            <TableColumn text="First name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="firstName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Last name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lastName"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <Button text="Add person"
+            GridPane.rowIndex="2"
+    onAction="#addPerson"/>
+</GridPane>
