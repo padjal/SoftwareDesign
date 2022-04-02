@@ -2,6 +2,7 @@ package ru.hse.hw.hw5_addressbook;
 
 import javafx.collections.ObservableArray;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Person {
@@ -10,11 +11,20 @@ public class Person {
     String street;
     String city;
     String postalCode;
-    Date birthday;
+    LocalDate birthday;
 
     public Person(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Person(String firstName, String lastName, String street, String city, String postalCode, LocalDate birthday) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.birthday = birthday;
     }
 
     public String getFirstName() {
@@ -57,11 +67,11 @@ public class Person {
         this.postalCode = postalCode;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 }

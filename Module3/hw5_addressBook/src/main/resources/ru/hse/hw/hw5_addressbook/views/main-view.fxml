@@ -10,6 +10,9 @@
           xmlns="http://javafx.com/javafx/8"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="ru.hse.hw.hw5_addressbook.MainViewModel">
+    <padding>
+        <Insets left="10" top="10" right="10" bottom="10"/>
+    </padding>
     <Label text="Address book"
     GridPane.rowIndex="0"/>
 
@@ -28,6 +31,26 @@
             </TableColumn>
         </columns>
     </TableView>
+
+    <Label text="Person Details:" GridPane.columnIndex="1"/>
+
+    <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.rowSpan="2" spacing="10">
+        <padding>
+            <Insets left="10" top="10"/>
+        </padding>
+        <HBox>
+            <Label text="First name:" maxWidth="200"/>
+            <Label fx:id="fistName" text="label" />
+        </HBox>
+
+        <HBox>
+            <Label text="Last name:" />
+            <Label fx:id="last" text="label"/>
+        </HBox>
+
+    </VBox>
+
+
 
     <Button text="Add person"
             GridPane.rowIndex="2"
