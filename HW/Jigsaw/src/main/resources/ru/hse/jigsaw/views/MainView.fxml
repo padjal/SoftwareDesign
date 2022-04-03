@@ -13,15 +13,30 @@
       prefHeight="400.0" prefWidth="600.0">
     <children>
         <HBox>
-            <GridPane fx:id="board">
-
-            </GridPane>
             <VBox>
+                <GridPane fx:id="board"/>
+                <HBox>
+                    <Label text="Turns: "/>
+                    <Label fx:id="turnsLabel"/>
+                </HBox>
+
+                <HBox>
+                    <Label text="Elapsed time: "/>
+                    <Label fx:id="time"/>
+                </HBox>
+
+            </VBox>
+
+            <VBox>
+                <padding>
+                    <Insets left="10"/>
+                </padding>
                 <Label text="New piece">
-                    <padding>
-                        <Insets left="10"/>
-                    </padding>
+
                 </Label>
+
+                <GridPane fx:id="piece"/>
+                <Button text="Generate new piece" onAction="#generatePiece"/>
             </VBox>
         </HBox>
 
