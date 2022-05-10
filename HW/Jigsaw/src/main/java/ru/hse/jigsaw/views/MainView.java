@@ -30,8 +30,6 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
     @FXML
     Label turnsLabel;
 
-
-
     @InjectViewModel
     private MainViewModel mainViewModel;
 

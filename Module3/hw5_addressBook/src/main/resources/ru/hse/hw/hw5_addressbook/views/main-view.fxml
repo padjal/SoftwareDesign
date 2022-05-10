@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<GridPane alignment="TOP_LEFT"
-          vgap="10"
+<GridPane
+        vgap="10"
           xmlns="http://javafx.com/javafx/8"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="ru.hse.hw.hw5_addressbook.MainViewModel">
