@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ru.hse.jigsaw.views.MainView"
-      prefHeight="400.0" prefWidth="600.0">
+<VBox prefHeight="550.0" prefWidth="700.0"
+      minHeight="550.0" minWidth="700.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.hse.jigsaw.views.MainView">
     <children>
         <HBox>
             <VBox>
-                <GridPane fx:id="board"/>
+                <padding>
+                    <Insets right="30"/>
+                </padding>
+                <GridPane fx:id="board" />
                 <HBox>
-                    <Label text="Turns: "/>
-                    <Label fx:id="turnsLabel"/>
+                    <Label text="Turns: " />
+                    <Label fx:id="turnsLabel" />
                 </HBox>
 
                 <HBox>
-                    <Label text="Elapsed time: "/>
-                    <Label fx:id="time"/>
+                    <Label text="Elapsed time: " />
+                    <Label fx:id="time" />
+                    <Label text="s"/>
                 </HBox>
 
             </VBox>
 
-            <VBox>
+            <VBox alignment="BOTTOM_CENTER">
                 <padding>
-                    <Insets left="10"/>
+                    <Insets left="10" />
                 </padding>
                 <Label text="New piece">
 
                 </Label>
 
-                <GridPane fx:id="piece"/>
-                <Button text="Generate new piece" onAction="#generatePiece"/>
+<!--                <GridPane fx:id="piece" />-->
+                <Group fx:id="piece2"/>
+                <Button onAction="#generatePiece" prefHeight="31.0" prefWidth="161.0" text="Generate new piece">
+
+                </Button>
+
             </VBox>
         </HBox>
 
