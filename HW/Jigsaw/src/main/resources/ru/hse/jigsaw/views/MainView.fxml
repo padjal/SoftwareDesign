@@ -9,10 +9,7 @@
       minHeight="550.0" minWidth="700.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.hse.jigsaw.views.MainView">
     <children>
         <HBox>
-            <VBox>
-                <padding>
-                    <Insets right="30"/>
-                </padding>
+            <VBox style="-fx-padding: 0 100 0 0">
                 <GridPane fx:id="board" />
                 <HBox>
                     <Label text="Turns: " />
@@ -31,13 +28,20 @@
                 <padding>
                     <Insets left="10" />
                 </padding>
-                <Label text="New piece">
-
+                <Label text="New piece"
+                style="-fx-min-height: 40">
                 </Label>
 
 <!--                <GridPane fx:id="piece" />-->
-                <Group fx:id="piece2"/>
-                <Button onAction="#generatePiece" prefHeight="31.0" prefWidth="161.0" text="Generate new piece">
+                <Pane minHeight="180"
+                minWidth="200">
+                    <Group fx:id="piece2"/>
+                </Pane>
+
+                <Button onAction="#generatePiece"
+                        prefHeight="31.0"
+                        prefWidth="161.0"
+                        text="Generate new piece">
 
                 </Button>
 
